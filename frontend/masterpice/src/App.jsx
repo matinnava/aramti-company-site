@@ -6,7 +6,7 @@ import Footer from './components/Footer'
 import NeuralBackground from './components/NeuralBackground'
 import Home from './pages/Home'
 import Services from './pages/Services'
-import Portfolio from './pages/Portfolio'
+import Portfolio from './pages/portfolio'
 import Order from './pages/Order'
 import Contact from './pages/Contact'
 
