@@ -1,0 +1,9 @@
+Django>=5.0,<5.2
+djangorestframework
+django-cors-headers
+python-decouple
+django-jazzmin
+Pillow
+gunicorn
+whitenoise
+dj-database-url
