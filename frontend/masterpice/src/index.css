@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pink: #E91E8C;
+  --cyan: #00D4FF;
+  --purple: #7B2FFF;
+  --violet: #E040FB;
+  --bg: #03010A;
+  --surface: rgba(10,5,25,0.7);
+  --border: rgba(123,47,255,0.12);
+  --text: #F0EEFF;
+  --muted: rgba(200,170,255,0.4);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Vazirmatn', sans-serif;
+  overflow-x: hidden;
+}
+
+body.en {
+  font-family: 'Space Grotesk', sans-serif;
+  direction: ltr;
+}
+
+body.fa {
+  font-family: 'Vazirmatn', sans-serif;
+  direction: rtl;
+}
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-thumb { background: rgba(123,47,255,0.3); border-radius: 2px; }
+
+/* Canvas */
+#bgCanvas { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+
+.noise {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+.vignette {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(3,1,10,0.7) 100%);
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Gradient text */
+.grad-text {
+  background: linear-gradient(135deg, #7B2FFF, #E040FB, #00D4FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: gradShift 4s linear infinite;
+}
+@keyframes gradShift { 0% { background-position: 0%; } 100% { background-position: 200%; } }
+
+/* Shimmer button effect */
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+@keyframes rotateBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes blink { 0%,50%{opacity:1;} 51%,100%{opacity:0;} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(22px);} to{opacity:1;transform:translateY(0);} }
+@keyframes orbSpin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+@keyframes badgePulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(0.7);} }
